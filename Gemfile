@@ -72,3 +72,10 @@ gem 'devise'
 
 gem 'friendly_id', '~> 5.2.4'
 
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
+gem 'sucker_punch'
+
