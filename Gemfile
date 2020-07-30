@@ -70,3 +70,5 @@ gem 'faker'
 
 gem 'devise'
 
+gem 'friendly_id', '~> 5.2.4'
+

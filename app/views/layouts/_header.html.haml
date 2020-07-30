@@ -1,30 +1,37 @@
-%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-  %a.navbar-brand{:href => "#"} Shriffal Online e-Library
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-success
+  %a.navbar-brand{:href => "/"} Shriffal Online e-Library
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     - if current_user
 
       %ul.navbar-nav.mr-auto
-      %li.nav-item.active
-        %a.nav-link{:href => "#"}
-          Home
-          %span.sr-only (current)
-      %li.nav-item
-        %a.nav-link{:href => "#"} Link
-      %li.nav-item.dropdown
-        %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-          Dropdown
-        .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-          %a.dropdown-item{:href => "#"} Action
-          %a.dropdown-item{:href => "#"} Another action
-          .dropdown-divider
-          %a.dropdown-item{:href => "#"} Something else here
-      %li.nav-item
-        %a.nav-link.disabled{:href => "#"} Disabled
-    %form.form-inline.my-2.my-lg-0
-      %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
-      %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
+        %li.nav-item{class: "#{'active font-weight-bold' if current_page?(root_path)}"}
+          = link_to root_path,class: 'nav-link' do
+            .fa.fa-home
+            Home
+        %li.nav-item{class: "#{'active font-weight-bold' if current_page?(courses_path)}"}
+          = link_to courses_path,class: 'nav-link' do
+            .fa.fa-book
+            Courses
+        
+        %li.nav-item{class: "#{'active font-weight-bold' if current_page?(new_course_path)}"}
+          = link_to new_course_path,class: 'nav-link' do
+            .fa.fa-plus
+            New Course
+
+        
+        
+      .form-inline.my-2.my-lg-0
+        = form_tag(courses_path, method: :get) do
+          .input-group
+            = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Find a course", class: 'form-control-sm'
+            %span.input-group-append
+              %button.btn.btn-primary.btn-sm{:type => "submit"}
+                %span.fa.fa-search{"aria-hidden" => "true"}
+
+        
+
 
 
 - if current_user
