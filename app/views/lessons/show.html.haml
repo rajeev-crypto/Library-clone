@@ -1,0 +1,9 @@
+= link_to 'Courses', courses_path
+\/
+= link_to @lesson.course.title, course_path(@lesson.course)  #its a breadcrumbs
+\/
+= link_to @lesson.title, course_lesson_path(@course,@lesson)
+%p
+= render 'lessons/lesson', lesson: @lesson
+
+= link_to 'Back To Course', course_path(@lesson.course)
