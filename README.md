@@ -11,7 +11,14 @@ def yuio
   @status= Status.all
 end
 ```
-
+Task 1 
+```ruby
+ Assosiaton 
+ Books
+  belongs_to :Author 
+ Author
+    has_many :books,dependent: :nullify
+```
 
 
 * System dependencies
